@@ -1,0 +1,27 @@
+GitHub Repo Address: https://github.com/ninaK117/csce314_Phase1.git
+
+1) What is a try/catch block and why do we need one?
+A try/catch block throws and catches exceptions. The try is a 
+block which throws exceptions. The catch block catches the exceptions. A try/catch block is needed to handle exceptions due to data passed in or coding errors.
+		 
+2) What is an exception?
+An exception is an unplanned event, such as an invalid input. 
+
+3) This is a nested class, also known as an inner class. Why do we use a nested class?
+
+A nested class is used in this case to show the relationship between the parent class Workouts and the child class Workout. The Workout class can also inherit methods from the Workouts class.
+
+4) Why didn't I have to declare this static?
+
+In Java, enums are already implicitly static.
+5) How do we get the name of an enumeration value?
+
+You need to type nameOfEnum.valueOf("name of enumeration value")
+
+6) What is short-circuit evaluation? 
+
+Short-circuit evaluation is when an expression stops being evaluated as soon as the value of the expression is determined. For example, for the expression A = (0 == 1 && 1 ==2), since 0 == 1 is automatically false, the whole expression A is false as a result. 1 == 2 does not need to be evaluated. 
+
+7) We choose ArrayList over Vector because...?
+We choose ArrayList because it is faster than vectors and not as costly.
+
