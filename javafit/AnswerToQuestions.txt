@@ -1,3 +1,8 @@
+ANSWERS TO QUESTIONS IN WORKOUTS.JAVA
+
+NAME: NINA KAAKE 
+CLASS: CSCE 314
+
 GitHub Repo Address: https://github.com/ninaK117/csce314_Phase1.git
 
 1) What is a try/catch block and why do we need one?
