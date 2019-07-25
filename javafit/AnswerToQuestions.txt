@@ -29,5 +29,14 @@ You need to type nameOfEnum.valueOf("name of enumeration value")
 Short-circuit evaluation is when an expression stops being evaluated as soon as the value of the expression is determined. For example, for the expression A = (0 == 1 && 1 ==2), since 0 == 1 is automatically false, the whole expression A is false as a result. 1 == 2 does not need to be evaluated. 
 
 7) We choose ArrayList over Vector because...?
-We choose ArrayList because it is faster than vectors and not as costly.
+We chose ArrayList because it is faster than vectors and not as costly. ArrayList is faster because it is not synchronized and it is not as costly because it has a slower growth compared to vectors. 
 
+Sources Used: 
+
+1) https://whatis.techtarget.com/definition/exception
+2) https://www.techopedia.com/definition/25641/trycatch-block
+3) https://www.geeksforgeeks.org/nested-classes-java/
+4) https://crunchify.com/why-and-for-what-should-i-use-enum-java-enum-examples/
+5) https://www.youtube.com/watch?v=5VyDsO0mFDU
+6) https://users.drew.edu/bburd/JavaForDummies4/ShortCircuitEval.pdf
+7) https://www.geeksforgeeks.org/vector-vs-arraylist-java/
