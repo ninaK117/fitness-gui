@@ -34,7 +34,6 @@ public class Workouts {
 		private String reminders;
 	
     Workout (String name, Equipment equipment, Muscle primaryMuscle, Muscle secondaryMuscle, String desc, String reminders) {
-    	//Code added at 4:34 PM
     	this.name = name;
     	this.equipment = equipment;
     	this.primaryMuscle = primaryMuscle;
