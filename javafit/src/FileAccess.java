@@ -33,7 +33,7 @@ public static Workouts loadWorkouts() {
 			String secondaryMuscle = values[3]; 
 			String desc = values[4]; 
 			String reminders = values[5]; 
-		
+			
 			w.addWorkout(name, Workouts.Equipment.valueOf(equipment), Workouts.Muscle.valueOf(primaryMuscle), Workouts.Muscle.valueOf(secondaryMuscle), desc, reminders);
 			
 		}
