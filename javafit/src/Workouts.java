@@ -28,10 +28,10 @@ public class Workouts {
 	private class Workout {
 	  private String name;
 	  private Equipment equipment;
-	  private Muscle primaryMuscle;
-	  private Muscle secondaryMuscle;
-	  private String desc;
-	  private String reminders;
+		private Muscle primaryMuscle;
+		private Muscle secondaryMuscle;
+		private String desc;
+		private String reminders;
 	
     Workout (String name, Equipment equipment, Muscle primaryMuscle, Muscle secondaryMuscle, String desc, String reminders) {
     	//Code added at 4:34 PM
@@ -69,19 +69,48 @@ public class Workouts {
     
     //How do we get the name of an enumeration value?
 
+    //Helper function to see if there are duplicates 
+    public boolean match(Workout w)
+    {
+
+  	  return ((this.name.equals(w.getName())) &&  
+  			  (this.equipment.equals(w.getEquipment())) &&
+  			  (this.primaryMuscle.equals(w.getprimaryMuscle()))&&
+  			  (this.secondaryMuscle.equals(w.getsecondaryMuscle())) &&
+  			  (this.desc.equals(w.getDesc())) &&
+  			  (this.reminders.equals(w.getReminders())));
+    }
+    
 	}
 
   
   // This function adds a new workout to the Workouts object.
   public final void addWorkout(String name, Equipment equipment, Muscle primaryMuscle, Muscle secondaryMuscle, String desc, String reminders)
   {
+	  //CODE ADDED AT 5:17 PM
 	  Workout w = new Workout (name,equipment,primaryMuscle, secondaryMuscle, desc, reminders);
+	  
+	  for (int i = 0; i < workoutList.size(); i++) 
+	  {
+		  if (workoutList.get(i).match(w)) 
+			  {
+			  return;
+			  }
+	  }
+	 
 	  workoutList.add(w);
   }
   
   // This function adds a workout to the Workouts object.
   public final void addWorkout(Workout workout)
   {
+	  for (int i = 0; i < workoutList.size(); i++)
+	  {
+		  if (workoutList.get(i).match(workout))
+		  {
+			  return;
+		  }
+	  }
 	  workoutList.add(workout);
   }
   
@@ -102,12 +131,12 @@ public class Workouts {
 				{
 					String name1 = (workoutList.get(i)).getName();
 					Equipment equipment1 = (workoutList.get(i)).getEquipment();
-			    		Muscle primaryMuscle1 = (workoutList.get(i)).getprimaryMuscle();
-			    		Muscle secondaryMuscle1 = (workoutList.get(i)).getsecondaryMuscle();
-			    		String desc1 = (workoutList.get(i)).getDesc();
-			    		String reminders1 = (workoutList.get(i)).getReminders();
+			    	Muscle primaryMuscle1 = (workoutList.get(i)).getprimaryMuscle();
+			    	Muscle secondaryMuscle1 = (workoutList.get(i)).getsecondaryMuscle();
+			    	String desc1 = (workoutList.get(i)).getDesc();
+			    	String reminders1 = (workoutList.get(i)).getReminders();
 					
-			    		w.addWorkout(name1, equipment1, primaryMuscle1, secondaryMuscle1, desc1, reminders1);
+			    	w.addWorkout(name1, equipment1, primaryMuscle1, secondaryMuscle1, desc1, reminders1);
 				}
 			}
 		}
@@ -119,12 +148,12 @@ public class Workouts {
 				{
 					String name1 = (workoutList.get(i)).getName();
 					Equipment equipment1 = (workoutList.get(i)).getEquipment();
-			    		Muscle primaryMuscle1 = (workoutList.get(i)).getprimaryMuscle();
-			    		Muscle secondaryMuscle1 = (workoutList.get(i)).getsecondaryMuscle();
-			    		String desc1 = (workoutList.get(i)).getDesc();
-			    		String reminders1 = (workoutList.get(i)).getReminders();
+			    	Muscle primaryMuscle1 = (workoutList.get(i)).getprimaryMuscle();
+			    	Muscle secondaryMuscle1 = (workoutList.get(i)).getsecondaryMuscle();
+			    	String desc1 = (workoutList.get(i)).getDesc();
+			    	String reminders1 = (workoutList.get(i)).getReminders();
 					
-			    		w.addWorkout(name1, equipment1, primaryMuscle1, secondaryMuscle1, desc1, reminders1);
+			    	w.addWorkout(name1, equipment1, primaryMuscle1, secondaryMuscle1, desc1, reminders1);
 				}
 			}
 		}
@@ -144,12 +173,12 @@ public class Workouts {
 			{
 				String name1 = (workoutList.get(i)).getName();
 				Equipment equipment1 = (workoutList.get(i)).getEquipment();
-		    		Muscle primaryMuscle1 = (workoutList.get(i)).getprimaryMuscle();
-		    		Muscle secondaryMuscle1 = (workoutList.get(i)).getsecondaryMuscle();
-		    		String desc1 = (workoutList.get(i)).getDesc();
-		    		String reminders1 = (workoutList.get(i)).getReminders();
+		    	Muscle primaryMuscle1 = (workoutList.get(i)).getprimaryMuscle();
+		    	Muscle secondaryMuscle1 = (workoutList.get(i)).getsecondaryMuscle();
+		    	String desc1 = (workoutList.get(i)).getDesc();
+		    	String reminders1 = (workoutList.get(i)).getReminders();
 				
-		    		w.addWorkout(name1, equipment1, primaryMuscle1, secondaryMuscle1, desc1, reminders1);
+		    	w.addWorkout(name1, equipment1, primaryMuscle1, secondaryMuscle1, desc1, reminders1);
 			}
 		}
 		return w;
@@ -180,13 +209,10 @@ public class Workouts {
   public final ArrayList<String> getNames()
   {
 	  ArrayList<String> workoutNames = new ArrayList<String>();
-
+	  
 	  for (int i = 0; i < workoutList.size(); i++)
 	  {
-		  if (!workoutNames.contains(workoutList.get(i).getName()))
-		  {
 			  workoutNames.add(workoutList.get(i).getName());
-		  }
 	  }
 	  
 	  return workoutNames;
@@ -202,18 +228,19 @@ public class Workouts {
 	  
 	  for (int i = 0; i<workoutList.size(); i++)
 	  {
-		String[] info = new String[6];
-		workoutInfo.add(info);
-		(workoutInfo.get(i))[0] = (workoutList.get(i)).getName();
-		(workoutInfo.get(i))[1] = (workoutList.get(i)).getEquipment().name();
-		(workoutInfo.get(i))[2] = (workoutList.get(i)).getprimaryMuscle().name();
-		(workoutInfo.get(i))[3] = (workoutList.get(i)).getsecondaryMuscle().name();
-		(workoutInfo.get(i))[4] = (workoutList.get(i)).getDesc();
-		(workoutInfo.get(i))[5] = (workoutList.get(i)).getReminders();  	
+			String[] info = new String[6];
+			workoutInfo.add(info);
+			(workoutInfo.get(i))[0] = (workoutList.get(i)).getName();
+			(workoutInfo.get(i))[1] = (workoutList.get(i)).getEquipment().name();
+			(workoutInfo.get(i))[2] = (workoutList.get(i)).getprimaryMuscle().name();
+			(workoutInfo.get(i))[3] = (workoutList.get(i)).getsecondaryMuscle().name();
+			(workoutInfo.get(i))[4] = (workoutList.get(i)).getDesc();
+			(workoutInfo.get(i))[5] = (workoutList.get(i)).getReminders();  	
 	  }
 	  
 	  return workoutInfo; 
   }
   
+
   
 }
