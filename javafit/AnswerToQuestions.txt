@@ -6,19 +6,20 @@ CLASS: CSCE 314
 GitHub Repo Address: https://github.com/ninaK117/csce314_Phase1.git
 
 1) What is a try/catch block and why do we need one?
-A try/catch block throws and catches exceptions. The try is a 
-block which throws exceptions. The catch block catches the exceptions. A try/catch block is needed to handle exceptions due to data passed in or coding errors.
+A try/catch block throws and catches exceptions. The try is a block which throws exceptions. The catch block catches the exceptions. A try/catch block is needed to handle exceptions due to data passed in or coding errors.
 		 
 2) What is an exception?
 An exception is an unplanned event, such as an invalid input. 
 
 3) This is a nested class, also known as an inner class. Why do we use a nested class?
 
-A nested class is used in this case to show the relationship between the parent class Workouts and the child class Workout. The Workout class can also inherit methods from the Workouts class.
+A nested class is used in this case to show the relationship between the parent class Workouts and the child class Workout. The Workout class can also inherit methods from the Workouts class. In addition, a nested class allows for increased
+encapsulation between the user and the interface. 
 
 4) Why didn't I have to declare this static?
 
 In Java, enums are already implicitly static.
+
 5) How do we get the name of an enumeration value?
 
 You need to type nameOfEnum.valueOf("name of enumeration value")
