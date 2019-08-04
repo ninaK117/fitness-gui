@@ -1,43 +1,31 @@
-ANSWERS TO QUESTIONS IN WORKOUTS.JAVA
+Phase 2: Answers
 
-NAME: NINA KAAKE 
-CLASS: CSCE 314
+Name: Nina Kaake
 
-GitHub Repo Address: https://github.com/ninaK117/csce314_Phase1.git
+Class: CSCE 314
 
-1) What is a try/catch block and why do we need one?
-A try/catch block throws and catches exceptions. The try is a block which throws exceptions. The catch block catches the exceptions. A try/catch block is needed to handle exceptions due to data passed in or coding errors.
-		 
-2) What is an exception?
-An exception is an unplanned event, such as an invalid input. 
+1) Why did I put the includeSecondary first?
 
-3) This is a nested class, also known as an inner class. Why do we use a nested class?
+Allows for short-circuit evaluation. If includeSecondary is false, the expression stops being evaluated as soon as includeSecondary is determined.
 
-A nested class is used in this case to show the relationship between the parent class Workouts and the child class Workout. The Workout class can also inherit methods from the Workouts class. In addition, a nested class allows for increased
-encapsulation between the user and the interface. 
-
-4) Why didn't I have to declare this static?
-
-In Java, enums are already implicitly static.
-
-5) How do we get the name of an enumeration value?
-
-You need to type nameOfEnum.valueOf("name of enumeration value")
-
-6) What is short-circuit evaluation? 
-
-Short-circuit evaluation is when an expression stops being evaluated as soon as the value of the expression is determined. For example, for the expression A = (0 == 1 && 1 ==2), since 0 == 1 is automatically false, the whole expression A is false as a result. 1 == 2 does not need to be evaluated. 
-
-7) We choose ArrayList over Vector because...?
+2) We choose ArrayList over Vector because...?
 
 We chose ArrayList because it is faster than vectors and not as costly. ArrayList is faster because it is not synchronized and it is not as costly because it has a slower growth compared to vectors. 
 
-Sources Used: 
+3) How do we get the name of an enumeration value?
 
-1) https://whatis.techtarget.com/definition/exception
-2) https://www.techopedia.com/definition/25641/trycatch-block
-3) https://www.geeksforgeeks.org/nested-classes-java/
-4) https://crunchify.com/why-and-for-what-should-i-use-enum-java-enum-examples/
-5) https://www.youtube.com/watch?v=5VyDsO0mFDU
-6) https://users.drew.edu/bburd/JavaForDummies4/ShortCircuitEval.pdf
-7) https://www.geeksforgeeks.org/vector-vs-arraylist-java/
+enumName.name() returns the name of an enumeration value? as a string. 
+
+4) What is this thing?
+
+This is a serial version ID. It gaurantees the same serial version ID if you happen to change something within a class and save it at different times. 
+
+5) What is serialization?
+
+Serialization is the act of representing an object as a sequence of bytes. These bytes represent the object's data, type, and types of data stored within it. An object that is serialized can then be deserialized by recreating the object in memory. 
+
+Sources Used:
+1) https://www.tutorialspoint.com/java/java_serialization
+2) http://frequal.com/java/PracticalSerialVersionIdGuidelines.html
+2) https://www.geeksforgeeks.org/vector-vs-arraylist-java/
+3) https://users.drew.edu/bburd/JavaForDummies4/ShortCircuitEval.pdf
