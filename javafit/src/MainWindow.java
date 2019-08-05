@@ -111,7 +111,7 @@ public class MainWindow extends JPanel {
     
   // Code goes here.
 	 
-	  JFrame workoutFrame = new JFrame();
+	  JFrame workoutFrame = new JFrame(Config.APPLICATIONNAME);
 	  WorkoutsPanel workoutPanel = new WorkoutsPanel(muscles, this.workouts);
 	  workoutPanel.setPreferredSize(new Dimension(600,400));
 	  workoutFrame.getContentPane().add(workoutPanel);
