@@ -58,7 +58,9 @@ public class WorkoutsPanel extends JTabbedPane {
       gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 1.0};
       gridBagLayout.columnWeights = new double[]{1.0};
       setLayout(gridBagLayout);
-              
+        
+   
+      //NAME OF WORKOUT DROP DOWN MENU 
       ArrayList<String> tempNames = this.workouts.getWorkoutsByEquipment(equipment).getNames();
       String[] names = new String[tempNames.size()];
       names = tempNames.toArray(names);
@@ -84,6 +86,7 @@ public class WorkoutsPanel extends JTabbedPane {
       // Update the workout selected to whatever our top 
       if (workoutIndex == -1) workoutIndex = WorkoutPanel.this.workouts.findWorkoutByName(cboNames.getSelectedItem().toString());
       
+      //EQUIPMENT PANEL THAT HAS THE DUPLICATES
       JPanel pnlEquipmentMuscles = new JPanel();
       GridBagConstraints gbc_pnlEquipmentMuscles = new GridBagConstraints();
       gbc_pnlEquipmentMuscles.fill = GridBagConstraints.BOTH;
@@ -94,8 +97,22 @@ public class WorkoutsPanel extends JTabbedPane {
       pnlEquipmentMuscles.setLayout(new GridLayout(0, 2, 0, 0));
       
       ArrayList<String> tempEquip = this.workouts.getWorkoutsByMuscle(muscle, false).getEquipment();
-      String[] equipment = new String[tempEquip.size()];
-      equipment = tempEquip.toArray(equipment);
+      ArrayList<String> newEquip = new ArrayList<String>(); //NEW ARRAYLIST FOR NO DUPLICATES 
+      
+      
+      //FUNCTION TO REMOVE DUPLICATES
+		for (int i = 0; i <tempEquip.size(); i++)
+		{
+			if (!newEquip.contains(tempEquip.get(i)))
+					{
+				newEquip.add(tempEquip.get(i));
+					}
+		}
+
+		String[] equipment = new String[newEquip.size()]; //NEW ARRAY FOR NO DUPLICATES 
+		equipment = newEquip.toArray(equipment); 
+      //String[] equipment = new String[tempEquip.size()]; //TA code
+      //equipment = tempEquip.toArray(equipment); //TA code
       cboEquipment = new JComboBox<String>(equipment);
       cboEquipment.setSelectedIndex(selectedEquipment);
       pnlEquipmentMuscles.add(cboEquipment);
