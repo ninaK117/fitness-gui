@@ -1,51 +1,68 @@
+// This file gives access to the underlying datafile and stores the data in the Workout class.
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.Scanner;
 
-
-//Write code to load the workouts from the provided workouts.csv file. 
-//The function should return a Workouts object.
-
 public class FileAccess {
-
-public static Workouts loadWorkouts() {
- // What is a try/catch block and why do we need one?
-		
- // What is an exception?
+  
+  public static Workouts loadWorkouts() {
+    Workouts retval = new Workouts();
+    
+    try { 
+      Scanner scanner = new Scanner(new File(Config.WORKOUTFILE));
+      while (scanner.hasNextLine()) {
+        String line = scanner.nextLine();
+        String[] fields = line.split(",");
+        // Check to make sure glen didn't bork the data file.
+        if (fields.length != 6)
+          System.out.println("Line has "+fields.length+" fields instead of 6. Check your commas.");
+        String name = fields[0];
+        Config.Equipment equipment = Config.Equipment.valueOf(fields[1]);
+        Config.Muscle primaryMuscle = Config.Muscle.valueOf(fields[2]);
+        Config.Muscle secondaryMuscle = Config.Muscle.valueOf(fields[3]);
+        String desc = fields[4];
+        String reminders = fields[5];
+        retval.addWorkout(name, equipment, primaryMuscle, secondaryMuscle, desc, reminders);
+      }
+      scanner.close();
+    }
+    catch (FileNotFoundException e) 
+    {
+      System.out.println("Unable to find workouts file. Is it in the same directory as the executable?\nError:"+e.toString());
+    }
+    return retval;
+  }
+  
+  public static EnumMap<Config.MuscleGroup, ArrayList<Config.Muscle>> loadFormats() {
 	
-	Workouts w = new Workouts();  
-	
-	String fileName = Config.WORKOUTFILE;
-	
-	
-
-	//Need a try/catch block because the file could not exist
-	try {
-		File file = new File(fileName); //Creates a new file --
-		Scanner inputStream = new Scanner(file);// --
-		
-		while(inputStream.hasNext()) {
-			String col = inputStream.nextLine(); //gets a whole line
-			String[] values = col.split(","); //split function splits row into an array of values
-			String name = values[0]; 
-			String equipment  = values[1]; 
-			String primaryMuscle = values[2]; 
-			String secondaryMuscle = values[3]; 
-			String desc = values[4]; 
-			String reminders = values[5]; 
-			
-			w.addWorkout(name, Workouts.Equipment.valueOf(equipment), Workouts.Muscle.valueOf(primaryMuscle), Workouts.Muscle.valueOf(secondaryMuscle), desc, reminders);
-			
-		}
-		inputStream.close();
-		
-	} catch (FileNotFoundException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	
-	return w;
-	
-}
-
+    EnumMap<Config.MuscleGroup, ArrayList<Config.Muscle>> retval  = new EnumMap<Config.MuscleGroup, ArrayList<Config.Muscle>>(Config.MuscleGroup.class);
+	  
+ 	  // Code goes here.
+    try { 
+	      Scanner scanner = new Scanner(new File(Config.WORKOUTFORMATFILE));
+	      while (scanner.hasNextLine()) {
+	        String line = scanner.nextLine();
+	        String[] fields = line.split(",");
+	        // Check to make sure glen didn't bork the data file.
+	        ArrayList<Config.Muscle> newA = new ArrayList<Config.Muscle>();
+	 
+	        for (int i = 1; i < fields.length; i++) 
+	        {
+	        	Config.Muscle muscle = Config.Muscle.valueOf(fields[i]);
+	        	newA.add(muscle);
+	        }
+	       
+	        retval.put(Config.MuscleGroup.valueOf(fields[0]), newA);
+	      }
+	      scanner.close();
+	    }
+	    catch (FileNotFoundException e) 
+	    {
+	      System.out.println("Unable to find workouts file. Is it in the same directory as the executable?\nError:"+e.toString());
+	    }
+    
+	  return retval;
+  }
 }
